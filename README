@@ -1,0 +1,48 @@
+DEPENDENCIES
+----------
+* Python
+* Numpy
+  sudo apt-get install python-numpy
+
+* wxPython
+* ReportLab
+* SimpleJSON
+
+
+INSTALLING ON OSX
+-----------------
+
+homebrew: issues compiling wxpython. Cannot be solved easily.
+
+macports: issue with py2app. Can be solved by installing macports from
+source in alternate prefix.
+
+
+Installing Macport from sources
+-------------------------------
+Reason: issue with py2app:
+http://stackoverflow.com/questions/13131024/py2app-error-for-opencv-macports-app-how-to-compile-opencv-with-headerpad-max-i
+
+Download macport source from https://distfiles.macports.org/MacPorts/
+expand archive, and do:
+./configure --prefix=/opt/localdepth/localdepth/localdepth/localdepth/local && make && sudo make install
+
+Adjust your PATH have $prefix/bin, $prefix/sbin, and MANPATH to have $prefix/share/man
+
+
+Installing Python 2.7
+---------------------
+sudo port install python27
+sudo port select --set python python27
+
+
+Installing needed stuff using Macport
+-------------------------------------
+sudo port install py27-wxpython-3.0 py27-numpy py27-pil py27-reportlab
+
+
+Building the app using py2app
+-----------------------------
+sudo port install py27-py2app
+
+./build_osx.sh

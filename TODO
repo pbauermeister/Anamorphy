@@ -1,0 +1,19 @@
+TODO
+ * OSX installer (.dmg) http://stackoverflow.com/questions/96882
+ * Help text
+ * FloatSpinners
+ * mm/cm/in --> ?
+ * read version INI and put in About dialog
+
+DONE
+ * Help (txt2tags)
+ * MS Windows installer
+ * About box
+ * Start with icons as arg or dropped on app icon
+ * Printing
+ * Image mapped
+ * Credits in about box (Python, Wx, PIL, t2t)
+
+ISSUES:
+ * Shape should not refer to perspective, as it can be also used in 2D-
+   based (anamorphosis.py)
