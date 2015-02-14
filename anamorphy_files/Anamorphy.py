@@ -14,6 +14,9 @@ import scene
 import myapp
 import config
 
+# forces static loading to please py2app/py/exe:
+import reportlab.rl_settings
+
 defaults = {
     "units_length": "cm",
     "camera_azimuth": 70,
@@ -47,3 +50,4 @@ os.chdir(my_dir)
 
 # start app
 myapp.run_GUI(defaults, scene)
+
