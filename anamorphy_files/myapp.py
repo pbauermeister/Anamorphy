@@ -94,7 +94,9 @@ class MyApp(wx.App):
 
     def OnInit(self):
         print "> OnInit called"
-
+        return True
+    
+    def initApp(self):
         # project file given as arg
         filename = None  # TODO: from args
         for f in  sys.argv[1:]:
@@ -170,6 +172,7 @@ def run_GUI(defaults, scene):
     gettext.install("app")  # replace with the appropriate catalog name
 
     app = MyApp(defaults, scene)
+    app.initApp()    
 
     # Go
     #  exception_handler.setHandler(app.frame.exception)
