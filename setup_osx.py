@@ -15,15 +15,15 @@ VERSION = version.getVersionFromScm()
 
 APP = ['anamorphy_files/Anamorphy.py']
 DATA_FILES = \
-    glob('*.png') \
-    + glob('*.ico') \
-    + glob('*.html') \
-    + glob('*.ini') \
-    + glob('sample_pics/*') \
+    glob('anamorphy_files/*.png') +\
+    glob('anamorphy_files/*.ico') +\
+    glob('anamorphy_files/*.html') +\
+    glob('anamorphy_files/*.ini') +\
+    glob('anamorphy_files/sample_pics') \
+#    glob('anamorphy_files/sample_pics/*') \
 
 
-EXT_PACKAGES = ['PIL', 'reportlab', #'simplejson',
-                'wx']
+EXT_PACKAGES = ['PIL', 'reportlab', 'simplejson', 'wx']
 
 # A custom plist for letting it associate with all files.
 PLIST = dict(
