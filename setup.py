@@ -11,9 +11,9 @@ from anamorphy_files import version
 #
 
 print
-print "= Generating version nr from SVN revision ="
+print "= Generating version nr from SCM revision ="
 version_str = version.getVersionFromScm()
-version.setVersionToIni("anamorphy_files")
+version.setVersionToIni()
 print version_str
 
 #

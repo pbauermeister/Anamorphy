@@ -8,12 +8,12 @@ Usage:
 
 from setuptools import setup
 from glob import glob
-import version
+from anamorphy_files import version
 
 NAME = "Anamorphy"
 VERSION = version.getVersionFromScm()
 
-APP = ['Anamorphy.py']
+APP = ['anamorphy_files/Anamorphy.py']
 DATA_FILES = \
     glob('*.png') \
     + glob('*.ico') \

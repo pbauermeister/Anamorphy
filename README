@@ -38,7 +38,7 @@ sudo port select --set python python27
 
 Installing needed stuff using Macport
 -------------------------------------
-sudo port install py27-wxpython-3.0 py27-numpy py27-pil py27-reportlab
+sudo port install py27-wxpython-3.0 py27-numpy py27-pil py27-reportlab py27-simplejson
 
 
 Building the app using py2app
