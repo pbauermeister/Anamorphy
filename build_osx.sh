@@ -81,8 +81,10 @@ part2() {
     # "backgroundPictureName" variable.
     
     ## TODO
-    
-    
+    mkdir /Volumes/$finalDMGName/.background
+    cp gfx_src/folder_bg.png /Volumes/$finalDMGName/.background/
+    backgroundPictureName=folder_bg.png
+
     # 5. Use AppleScript to set the visual styles (name of .app must be in
     # bash variable "applicationName", use variables for the other
     # properties as needed):
@@ -98,7 +100,7 @@ part2() {
                set theViewOptions to the icon view options of container window
                set arrangement of theViewOptions to not arranged
                set icon size of theViewOptions to 72
-    --           set background picture of theViewOptions to file ".background:'${backgroundPictureName}'"
+               set background picture of theViewOptions to file ".background:'${backgroundPictureName}'"
                make new alias file at container window to POSIX file "/Applications" with properties {name:"Applications"}
                set position of item "'${applicationName}'" of container window to {100, 100}
                set position of item "Applications" of container window to {375, 100}
