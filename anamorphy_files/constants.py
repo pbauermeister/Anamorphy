@@ -7,16 +7,25 @@ import glob
 
 #DEFAULT_PATH = os.path.expanduser("~/.Anamorphy.cnf")
 
+IS_WINDOWS = False
+IS_OSX = False
+IS_LINUX = False
+
 if os.name == 'nt':
     print "System is Windows"
     parent = '%(APPDATA)s' % os.environ
     APP_CONFIG_PATH = os.path.join(parent, "Anamorphy.ini")
+    IS_WINDOWS = True
+
 elif sys.platform.startswith('darwin'):
     print "System is Mac"
     APP_CONFIG_PATH = os.path.expanduser("~/.Anamorphy.ini")
+    IS_OSX = True
+
 elif os.name == 'posix':
     print "System is Linux/Unix"
     APP_CONFIG_PATH = os.path.expanduser("~/.Anamorphy.ini")
+    IS_LINUX = True
 
 print "Program config file is", APP_CONFIG_PATH
 

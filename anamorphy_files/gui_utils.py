@@ -1,14 +1,20 @@
-def eraseBackground(w, dc, bmp):
-    # Add a picture to the background
+import constants
+
+def eraseBackground(w, dc, bmp):        
     if not dc:
         dc = wx.ClientDC(w)
         rect = w.GetUpdateRegion().GetBox()
         dc.SetClippingRect(rect)
-    dc.Clear()
+
     if bmp is None:
+        dc.Clear()
         return
 
-    # tile        
+    if not constants.IS_OSX:
+        dc.Clear()
+        return
+
+    # Tile a picture to the background
     sz = w.GetClientSize()
     w = bmp.GetWidth()
     h = bmp.GetHeight()
