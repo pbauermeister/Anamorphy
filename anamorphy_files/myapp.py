@@ -192,5 +192,6 @@ def run_GUI(defaults, scene):
     # Go
     #  exception_handler.setHandler(app.frame.exception)
     #  with exception_handler(app.frame.exception):
+    app.frame.setReady()
     app.MainLoop()
     #  exception_handler.resetHandler()

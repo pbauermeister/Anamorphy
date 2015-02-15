@@ -21,6 +21,7 @@ import render_fullscreen
 import bitmap
 import traceback
 from gui_utils import eraseBackground
+import constants
 
 DEBUG = False
 
@@ -35,7 +36,8 @@ class Anamorphosis(object):
     def renderCanvas(self, canvas, preview=True):
         pdc = wx.PaintDC(canvas)  # simple device context
         dc = wx.GCDC(pdc)  # device context with alpha and anti-alias
-        eraseBackground(canvas, dc, self.bg_bmp_render)
+        if constants.WITH_TEXTURE_CANVAS:
+            eraseBackground(canvas, dc, self.bg_bmp_render)
 
         canvas_w, canvas_h = canvas.GetClientSize()
         canvas_w -= 1

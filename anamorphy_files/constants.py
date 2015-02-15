@@ -16,16 +16,22 @@ if os.name == 'nt':
     parent = '%(APPDATA)s' % os.environ
     APP_CONFIG_PATH = os.path.join(parent, "Anamorphy.ini")
     IS_WINDOWS = True
+    WITH_TEXTURE_BG = False
+    WITH_TEXTURE_CANVAS = False
 
 elif sys.platform.startswith('darwin'):
     print "System is Mac"
     APP_CONFIG_PATH = os.path.expanduser("~/.Anamorphy.ini")
     IS_OSX = True
+    WITH_TEXTURE_BG = True
+    WITH_TEXTURE_CANVAS = False
 
 elif os.name == 'posix':
     print "System is Linux/Unix"
     APP_CONFIG_PATH = os.path.expanduser("~/.Anamorphy.ini")
     IS_LINUX = True
+    WITH_TEXTURE_BG = False
+    WITH_TEXTURE_CANVAS = False
 
 print "Program config file is", APP_CONFIG_PATH
 

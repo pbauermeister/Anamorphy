@@ -10,10 +10,6 @@ def eraseBackground(w, dc, bmp):
         dc.Clear()
         return
 
-    if not constants.IS_OSX:
-        dc.Clear()
-        return
-
     # Tile a picture to the background
     sz = w.GetClientSize()
     w = bmp.GetWidth()
