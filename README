@@ -1,16 +1,6 @@
-DEPENDENCIES
-----------
-* Python
-* Numpy
-  sudo apt-get install python-numpy
-
-* wxPython
-* ReportLab
-* SimpleJSON
-
-
-INSTALLING ON OSX
------------------
+------------------------------
+INSTALLING AND BUILDING ON OSX
+------------------------------
 
 homebrew: issues compiling wxpython. Cannot be solved easily.
 
@@ -46,3 +36,23 @@ Building the app using py2app
 sudo port install py27-py2app
 
 ./build_osx.sh
+
+
+---------------------------------
+INSTALLING AND BUILDING ON DEBIAN
+---------------------------------
+
+Dependencies
+------------
+
+* Python
+* Numpy
+* wxPython
+* ReportLab
+* SimpleJSON
+
+sudo apt-get install python-numpy python-stdeb pep8 python-wxgtk2.8 python-all build-essential
+
+./build_debian.sh
+
+
