@@ -20,6 +20,7 @@ import math
 import render_fullscreen
 import bitmap
 import traceback
+from gui_utils import eraseBackground
 
 DEBUG = False
 
@@ -29,10 +30,12 @@ class Anamorphosis(object):
     def __init__(self, show_image, bitmap):
         self.show_image = show_image
         self.bitmap = bitmap
+        self.bg_bmp_render = wx.Bitmap("bg_2.jpg")
 
     def renderCanvas(self, canvas, preview=True):
         pdc = wx.PaintDC(canvas)  # simple device context
         dc = wx.GCDC(pdc)  # device context with alpha and anti-alias
+        eraseBackground(canvas, dc, self.bg_bmp_render)
 
         canvas_w, canvas_h = canvas.GetClientSize()
         canvas_w -= 1
