@@ -10,7 +10,8 @@ import time
 
 from GUI import MainFrame
 import constants
-
+import subprocess
+import gettext
 
 class DropTarget(wx.FileDropTarget):
     """Class to implement a file drag-n-drop target"""
@@ -165,14 +166,28 @@ class MyApp(wx.App):
         pass
 
 
+def fixup_osx():
+    # ***Hack***
+    # On OSX, when launched by Finder, app starts, but instance remains
+    # invisible. Re-launching the app will make the 1st instance visible.
+    # argv[0] expected to be: 
+    #   '/Applications/Anamorphy.app/Contents/Resources/Anamorphy.py'
+    POSTFIX = "/Contents/Resources/Anamorphy.py"
+    argv0 = sys.argv[0]
+    if argv0.endswith(POSTFIX):
+        osx_app_path = argv0[:-len(POSTFIX)]
+        def deferred_run():
+            subprocess.call(["open", osx_app_path])
+        wx.FutureCall(2500, deferred_run)
+
+
 # Create the dialog
 def run_GUI(defaults, scene):
-
-    import gettext
     gettext.install("app")  # replace with the appropriate catalog name
 
     app = MyApp(defaults, scene)
     app.initApp()    
+    fixup_osx()
 
     # Go
     #  exception_handler.setHandler(app.frame.exception)

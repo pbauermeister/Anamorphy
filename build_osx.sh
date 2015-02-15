@@ -119,9 +119,11 @@ part2() {
     # 6. Finialize the DMG by setting permissions properly, compressing
     # and releasing it:
     
-    echo
-    echo "You may now arrange icons inside the package window."
-    sudo -k chmod -Rf go-w /Volumes/"${title}"
+    #echo
+    #echo "You may now arrange icons inside the package window."
+    #sudo -k chmod -Rf go-w /Volumes/"${title}"
+
+    sudo -p "Sudo will now set needed permissions on volume. Please enter your password: " chmod -Rf go-w /Volumes/"${title}"
     sync
     sync
     hdiutil detach ${device}
