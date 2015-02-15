@@ -37,7 +37,7 @@ part2() {
     echo "============================="
     echo
     
-    revision=$(python -c "from anamorphy_files import version; print version.getVersionFromIni()")
+    revision=$(python -c "from anamorphy_files import version; print version.getVersionFromIni('anamorphy_files')")
     
     size=100000
     source=dist/Anamorphy.app

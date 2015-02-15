@@ -13,7 +13,7 @@ from anamorphy_files import version
 print
 print "= Generating version nr from SCM revision ="
 version_str = version.getVersionFromScm()
-version.setVersionToIni()
+version.setVersionToIni('anamorphy_files')
 print version_str
 
 #
