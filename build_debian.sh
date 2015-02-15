@@ -17,7 +17,7 @@ rm -rf deb_dist/
 # STEP 2 - PEP8 check
 echo
 echo "= PEP 8 ="
-./check_pep8.sh
+# ./check_pep8.sh
 
 ###############################################################################
 # STEP 3 - Debian build
