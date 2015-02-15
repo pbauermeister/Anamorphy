@@ -15,7 +15,10 @@ import myapp
 import config
 
 # forces static loading to please py2app/py/exe:
-import reportlab.rl_settings
+try:
+    import reportlab.rl_settings
+except:
+    pass
 
 defaults = {
     "units_length": "cm",

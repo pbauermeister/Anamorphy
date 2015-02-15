@@ -16,6 +16,7 @@ VERSION = version.getVersionFromScm()
 APP = ['anamorphy_files/Anamorphy.py']
 DATA_FILES = \
     glob('anamorphy_files/*.png') +\
+    glob('anamorphy_files/*.jpg') +\
     glob('anamorphy_files/*.ico') +\
     glob('anamorphy_files/*.html') +\
     glob('anamorphy_files/*.ini') +\

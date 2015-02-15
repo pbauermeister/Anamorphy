@@ -47,7 +47,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 General Public License for more details. You should have received a
 copy of the GNU General Public License along with Anamorphy; if not,
 write to the Free Software Foundation, Inc., 59 Temple Place, Suite
-330, Boston, MA 02111-1307 USA
+330, Boston, MA 02111-1307 USA.
 
 = History =
 
@@ -57,12 +57,11 @@ Version @CURRENT_VERSION@:
 
 = How to Get the Sources =
 
-...
-
+See https://github.com/pbauermeister/Anamorphy
 
 = Credits and Copyright =
 
-(C) copyright 2013 by P. Bauermeister.
+(C) copyright 2013-2015 by P. Bauermeister.
 
 
 == Third-party software with portions embedded into the run-time ==
