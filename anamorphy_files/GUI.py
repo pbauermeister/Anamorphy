@@ -1029,7 +1029,7 @@ write to the Free Software Foundation, Inc., 59 Temple Place, Suite
         info.SetName('Anamorphy')
         info.SetVersion(version.getVersion())
         info.SetDescription(description)
-        info.SetCopyright(_('(C) Copyright 2013 by Pascal Bauermeister'))
+        info.SetCopyright(_('(C) Copyright 2013-15 by Pascal Bauermeister'))
         info.SetWebSite('http://www.instructables.com/id/Anamorphy')
         info.SetLicence(licence)
         info.AddDeveloper('Pascal Bauermeister')
