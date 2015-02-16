@@ -1,6 +1,6 @@
 #!/bin/sh 
 
-rm -rf *~ *.pyc *#* dist/ build/ deb_dist/ .eggs/ *.dmg
+rm -rf *~ *.pyc *#* dist/ build/ deb_dist/ .eggs/ *.dmg output-*
 
 (
     cd anamorphy_files
