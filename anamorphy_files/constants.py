@@ -16,7 +16,7 @@ if os.name == 'nt':
     parent = '%(APPDATA)s' % os.environ
     APP_CONFIG_PATH = os.path.join(parent, "Anamorphy.ini")
     IS_WINDOWS = True
-    WITH_TEXTURE_BG = True
+    WITH_TEXTURE_BG =  False
     WITH_TEXTURE_CANVAS = False
 
 elif sys.platform.startswith('darwin'):
