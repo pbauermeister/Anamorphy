@@ -48,8 +48,17 @@ defaults = {
 scene = scene.Scene()
 
 # go to the dir representing the current module
-my_dir = os.path.split(__file__)[0]
-os.chdir(my_dir)
+try:
+    my_dir = os.path.split(__file__)[0]
+    os.chdir(my_dir)
+except:
+    try:
+        my_dir = os.path.split(sys.argv[0])[0]
+        my_dir = os.path.join(my_dir, "anamorphy_files")
+        os.chdir(my_dir)
+    except:
+        my_dir = os.path.split(sys.argv[0])[0]
+        os.chdir(my_dir)
 
 # start app
 myapp.run_GUI(defaults, scene)
