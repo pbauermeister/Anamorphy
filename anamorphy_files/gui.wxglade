@@ -609,7 +609,7 @@
                                                 <option>1</option>
                                                 <object class="wxStaticBoxSizer" name="sizer_114" base="EditStaticBoxSizer">
                                                     <orient>wxVERTICAL</orient>
-                                                    <label>Marquee</label>
+                                                    <label>Object</label>
                                                     <object class="sizeritem">
                                                         <flag>wxEXPAND</flag>
                                                         <border>0</border>

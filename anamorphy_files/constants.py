@@ -23,7 +23,7 @@ elif sys.platform.startswith('darwin'):
     print "System is Mac"
     APP_CONFIG_PATH = os.path.expanduser("~/.Anamorphy.ini")
     IS_OSX = True
-    WITH_TEXTURE_BG = True
+    WITH_TEXTURE_BG = False
     WITH_TEXTURE_CANVAS = False
 
 elif os.name == 'posix':
