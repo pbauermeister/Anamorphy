@@ -27,7 +27,8 @@ def makeFromPerspective(bitmap,
                         img_corners,
                         bound_corners,
                         name="?",
-                        use_thumbnail=True):
+                        use_thumbnail=True,
+                        fast=False):
         """
         Does perspective-transformed of the bitmap represented by this
         object, with a perspective defined by four img corners, and
@@ -54,8 +55,8 @@ def makeFromPerspective(bitmap,
         values = [abs(item) for sublist in dst_pts for item in sublist]
         maxi = max(bitmap.getWidth(), bitmap.getHeight())
         max_coord = maxi * MAX_REASONABLE_COORD_FACTOR
-        if True in [v > max_coord for v in values]:
-            return None, 0, 0, None
+        if fast and True in [v > max_coord for v in values]:
+                return None, 0, 0, None
 
         # do persp transform
         pts8 = src_pts + dst_pts

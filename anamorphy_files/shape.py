@@ -215,7 +215,7 @@ class Face(Shape):
                         1000, 1000,  # display_w, display_h,
                         img_corners,
                         None,
-                        use_thumbnail=True)
+                        use_thumbnail=True, fast=fast)
                     display.DrawBitmap(img, x0, y0)
                 except Exception, e:
                     import traceback

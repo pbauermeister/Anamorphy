@@ -193,7 +193,7 @@ class Anamorphosis(object):
                         img_corners,
                         card_coords,
                         name=card.name,
-                        use_thumbnail=preview)
+                        use_thumbnail=preview, fast=preview)
                     if img is not None:
                         display.DrawBitmap(img, dest_x, dest_y)
                         images.append(img)
