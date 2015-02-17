@@ -126,41 +126,9 @@ class Anamorphosis(object):
                 display.DrawBitmap(bmp, x0, y0)
                 progressPcentFn(40)
 
-        progressPcentFn(60)
-        if preview and not self.show_image:
-            # draw marquee grids, clipped by cards
-            for card, array, debug_color in (
-                (cb, cb_array, 'BLUE'),
-                (cf, cf_array, 'RED')
-                ):
-                if card is None:
-                    continue
-
-                color = debug_color if DEBUG else 'GRAY'
-                i = 0
-                corners = [to2d(v) for v in card.getVertices()]
-                display.SetClip(corners)
-                for u in range(array.nodes1 - 1):
-                    for v in range(array.nodes2 - 1):
-                        vertices = (
-                            array.getVertexAt(u,         v),
-                            array.getVertexAt(u + 1,     v),
-                            array.getVertexAt(u + 1, v + 1),
-                            array.getVertexAt(u,     v + 1))
-
-                        corners = [to2d(v) for v in vertices]
-                        display.DrawPolygon(corners,
-                                            (255, 255, 255, 64),
-                                            color)
-
-                        if DEBUG:
-                            mid = to2d(sum(vertices) / 4)
-                            display.DrawText(str(i), mid[0], mid[1], color)
-                            i += 1
-            display.SetClip(None)
-
         # display marquee images
-        progressPcentFn(80)
+        progressPcentFn(60)
+        failed = False
         if self.show_image or not preview:
             images = []
             images_x = []
@@ -197,10 +165,48 @@ class Anamorphosis(object):
                     if img is not None:
                         display.DrawBitmap(img, dest_x, dest_y)
                         images.append(img)
+                    else:
+                        failed = True
                 except Exception, e:
                     traceback.print_exc()
                     print e
+                    failed = True
                     pass
+
+
+        # display marquee grid
+        progressPcentFn(80)
+        if (preview and not self.show_image) or failed:
+            # draw marquee grids, clipped by cards
+            for card, array, debug_color in (
+                (cb, cb_array, 'BLUE'),
+                (cf, cf_array, 'RED')
+                ):
+                if card is None:
+                    continue
+
+                color = debug_color if DEBUG else 'GRAY'
+                i = 0
+                corners = [to2d(v) for v in card.getVertices()]
+                display.SetClip(corners)
+                for u in range(array.nodes1 - 1):
+                    for v in range(array.nodes2 - 1):
+                        vertices = (
+                            array.getVertexAt(u,         v),
+                            array.getVertexAt(u + 1,     v),
+                            array.getVertexAt(u + 1, v + 1),
+                            array.getVertexAt(u,     v + 1))
+
+                        corners = [to2d(v) for v in vertices]
+                        display.DrawPolygon(corners,
+                                            (255, 255, 255, 64),
+                                            color)
+
+                        if DEBUG:
+                            mid = to2d(sum(vertices) / 4)
+                            display.DrawText(str(i), mid[0], mid[1], color)
+                            i += 1
+            display.SetClip(None)
 
         if box:
             display.DrawPolygon(bounds, None, 'BLACK')
