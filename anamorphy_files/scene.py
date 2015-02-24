@@ -9,6 +9,7 @@ import shape
 import numpy
 import geometry
 import anamorphosis
+import perspective
 
 
 class Scene(object):
@@ -260,3 +261,77 @@ class Scene(object):
     def setMarqueeTiles(self, m, n):
         self.tiles_div1 = m
         self.tiles_div2 = n
+
+    def render(self, display, getValueFn,
+               marquee_ratio, marquee_bmp, 
+               card_bg_bmp, 
+               setPosFn):
+        # camera pos indication
+        if setPosFn is not None:
+            theta = math.radians(90 - getValueFn("camera_altitude"))
+            phi = math.radians(90 - getValueFn("camera_azimuth"))
+            r = getValueFn("camera_distance")
+            y = r * math.cos(theta)
+            x = r * math.cos(phi) * math.sin(theta)
+            z = r * math.sin(phi) * math.sin(theta)
+            pos = "x:%d  y:%d  z:%d" % (x, y, z)
+            setPosFn(pos)
+    
+        # create perspective
+        persp = perspective.Perspective(
+            getValueFn("camera_azimuth"),
+            getValueFn("camera_altitude"),
+            getValueFn("camera_distance"),
+            getValueFn("camera_fov"))
+    
+        # adjust scene (position objects)
+        self.setCard(
+            getValueFn("card_width"),
+            getValueFn("card_height"),
+            getValueFn("card_fold"),
+            getValueFn("card_angle"),
+            getValueFn("card_elevation"),
+            card_bg_bmp if getValueFn("card_background_show") else None
+        )
+        self.setMarquee(
+            persp.getCameraRotateMatrix(),
+            getValueFn("camera_distance"),
+            getValueFn("marquee_width"),
+            getValueFn("marquee_width") * marquee_ratio,
+            getValueFn("marquee_distance"),
+            getValueFn("marquee_hoff"),
+            getValueFn("marquee_voff")
+        )
+        self.setCameraPos(persp.getCamera())
+        self.setMarqueeTiles(5, 5)
+    
+        # compute 3D -> 2D
+        shapes = self.getShapes()
+        marquee_show = getValueFn("marquee_show")
+        for each in shapes:
+            if each is None:
+                continue
+            if marquee_show:
+                show = each.name not in ("marquee", "CBP", "CFP")
+            else:
+                show = True
+            try:
+                each.render(display, persp, show=show)
+            except ValueError, e:
+                traceback.print_exc()
+                print e
+                pass  # some point cannot be rendered
+            except OverflowError, e:
+                traceback.print_exc()
+                print e
+                pass  # some point cannot be rendered
+    
+        # render marquee image
+        if getValueFn("marquee_show") and marquee_bmp is not None:
+            marquee_2d_points = shape.getShape("marquee").get2dPoints()
+            (x, y), w, h = geometry.boundingRect(marquee_2d_points)
+    
+            bmp = marquee_bmp.getScaled(w, h)
+            display.DrawBitmap(bmp, x, y)
+            
+        return
