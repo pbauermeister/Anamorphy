@@ -1,0 +1,8 @@
+# Python
+*.pyc
+
+# Emacs
+*~
+out
+
+.DS_Store
