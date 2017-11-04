@@ -22,7 +22,7 @@ def PilImageToWxBitmap(myPilImage):
 
 def PilImageToWxImage(myPilImage):
     myWxImage = wx.EmptyImage(myPilImage.size[0], myPilImage.size[1])
-    myWxImage.SetData(myPilImage.convert('RGB').tostring())
+    myWxImage.SetData(myPilImage.convert('RGB').tobytes())
     return myWxImage
 
 
@@ -38,10 +38,10 @@ def PilImageToWxImage(myPilImage, copyAlpha=True):
         myPilImageCopyRGBA = myPilImage.copy()
         myPilImageCopyRGB = myPilImageCopyRGBA.convert('RGB')  # RGBA --> RGB
         try:
-            myPilImageRgbData = myPilImageCopyRGB.tostring()
+            myPilImageRgbData = myPilImageCopyRGB.tobytes()
             myWxImage.SetData(myPilImageRgbData)
             # Create layer and insert alpha values.
-            myWxImage.SetAlphaData(myPilImageCopyRGBA.tostring()[3::4])
+            myWxImage.SetAlphaData(myPilImageCopyRGBA.tobytes()[3::4])
         except:
             raise
 
@@ -50,7 +50,7 @@ def PilImageToWxImage(myPilImage, copyAlpha=True):
         myPilImageCopy = myPilImage.copy()
         # Discard any alpha from the PIL image:
         myPilImageCopyRGB = myPilImageCopy.convert('RGB')
-        myPilImageRgbData = myPilImageCopyRGB.tostring()
+        myPilImageRgbData = myPilImageCopyRGB.tobytes()
         myWxImage.SetData(myPilImageRgbData)
 
     return myWxImage

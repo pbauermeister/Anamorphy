@@ -10,6 +10,7 @@ import numpy
 import geometry
 import anamorphosis
 import perspective
+import traceback
 
 
 class Scene(object):
