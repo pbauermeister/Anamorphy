@@ -9,8 +9,8 @@ projection; instead of which, we proceed to 2D->2D perspective
 transform here.
 """
 import wx
-import Image
-import ImageDraw
+from PIL import Image
+from PIL import ImageDraw
 
 import geometry
 import numpy

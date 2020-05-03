@@ -5,7 +5,7 @@ This module provides image conversions between PIL and WX.
 
 # Tested with wxPython 2.3.4.2 and PIL 1.1.3.
 import wx
-import Image             # PIL module. Only if you use the PIL library.
+from PIL import Image  # PIL module. Only if you use the PIL library.
 
 
 def WxBitmapToPilImage(myBitmap):

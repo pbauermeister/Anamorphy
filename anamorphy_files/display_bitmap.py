@@ -4,8 +4,8 @@ by display.py.
 """
 from display import DisplayBase
 import geometry
-import Image
-import ImageDraw
+from PIL import Image
+from PIL import ImageDraw
 import bitmap
 
 
